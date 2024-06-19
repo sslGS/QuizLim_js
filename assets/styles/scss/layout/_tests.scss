@@ -1,0 +1,393 @@
+//TESTS
+.tests {
+  &_light-blue {
+    padding: 42px 0;
+    background-color: $blue--background;
+    .tests {
+      &__body {
+        background-color: $white;
+        box-shadow: 0px 0px 13px rgba(54, 70, 126, 0.13);
+        border-radius: 5px;
+        padding: 28px 25px;
+      }
+      &__heading {
+        @include dfsb;
+        padding-bottom: 17px;
+        border-bottom: $line--border;
+      }
+      &__title {
+        color: $blue--00;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        text-transform: uppercase;
+      }
+    }
+    .count-test {
+      color: $blue--20;
+      display: flex;
+      align-items: center;
+      &__current {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        color: $orange;
+        margin-left: 12px;
+      }
+    }
+    .question {
+      text-align: center;
+      &__subtitle {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        text-align: center;
+      }
+      &__word {
+        margin-top: 18px;
+      }
+    }
+    .content {
+      margin-top: 28px;
+      &__wrapper {
+        gap: 20px;
+        display: flex;
+        align-items: center;
+        margin-top: 28px;
+      }
+      .variants {
+        &__list {
+          @include dfsb;
+          width: 100%;
+          flex-wrap: wrap;
+          gap: 41px 25px;
+          max-width: 540px;
+          margin: 0 auto;
+        }
+        &__item {
+          border: $line--border;
+          box-sizing: border-box;
+          border-radius: 2px;
+          padding: 8px 25px;
+          flex: 1 1 calc(50% - 30px);
+          transition: 0.35s box-shadow, 0.35s color;
+          user-select: none;
+          &:hover {
+            color: $turquoise--20;
+            box-shadow: 0px 0px 8px rgba(54, 70, 126, 0.13);
+          }
+        }
+      }
+    }
+  }
+  &_dark-blue {
+    padding: 42px 0;
+    background-color: $blue--20;
+    .tests {
+      &__wrap {
+        background-color: $white;
+        box-shadow: 0px 0px 13px rgba(54, 70, 126, 0.13);
+        border-radius: 5px;
+      }
+
+      &__body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas:
+          "title count"
+          "text count"
+          "content answers";
+
+        // padding: 30px 42px 30px 25px;
+        position: relative;
+        z-index: 1;
+      }
+      &__title,
+      &__text,
+      &__content {
+        background-color: $blue--background;
+      }
+      &__title {
+        grid-area: title;
+        padding: 30px 0 0 25px;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        color: $blue--00;
+        text-transform: uppercase;
+      }
+      &__text {
+        grid-area: text;
+        padding: 11px 0 0 25px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: $black--00;
+      }
+      &__content {
+        grid-area: content;
+
+        padding: 49px 0 65px 0;
+        @include dfcenter;
+        .content {
+          &__text {
+            font-size: 24px;
+            line-height: 28px;
+          }
+        }
+      }
+      &__count {
+        grid-area: count;
+        color: $blue--20;
+        padding-right: 42px;
+        @include dfend;
+        .count {
+          &__current {
+            margin-left: 13px;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 28px;
+            color: $orange;
+          }
+          &__total {
+            font-size: 16px;
+            line-height: 19px;
+          }
+        }
+      }
+      &__answers {
+        grid-area: answers;
+        padding-top: 30px;
+        margin-left: 43px;
+        padding-right: 42px;
+        padding-bottom: 65px;
+        .answers-test {
+          &__list {
+            user-select: none;
+          }
+          &__item {
+            padding: 8px 25px;
+            background: $white;
+            border: $line--border;
+            border-radius: 2px;
+            transition: 0.35s box-shadow, 0.35s color;
+            & + .answers-test__item {
+              margin-top: 12px;
+            }
+            &:hover {
+              box-shadow: 0px 0px 8px rgba(54, 70, 126, 0.13);
+              color: $turquoise--20;
+            }
+          }
+        }
+      }
+    }
+  }
+  &_results {
+    background-color: $blue--20;
+    .tests {
+      &__wrap {
+        margin-top: 42px;
+        padding-bottom: 42px;
+      }
+      &__body {
+        background: $white;
+        box-shadow: 0px 0px 13px rgba(54, 70, 126, 0.13);
+        border-radius: 5px;
+        padding: 25px;
+      }
+      &__heading {
+        @include dfsb;
+        padding-bottom: 17px;
+        border-bottom: $line--border;
+      }
+      &__title {
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        color: $blue--00;
+      }
+      &__count {
+        @include dfsb;
+        color: $blue--20;
+        .count {
+          &__text {
+            font-size: 18px;
+            line-height: 21px;
+          }
+          &__current {
+            margin-left: 10px;
+
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 28px;
+            color: $orange;
+          }
+          &__total {
+            font-size: 16px;
+            line-height: 19px;
+            margin-left: 2px;
+          }
+        }
+      }
+      &__content {
+        padding-top: 27px;
+        text-align: center;
+        color: $black--00;
+        font-size: 18px;
+        line-height: 21px;
+      }
+      &__subtitle {
+        font-weight: 500;
+        display: block;
+      }
+      &__results {
+        display: block;
+        margin-top: 12px;
+      }
+      &__correct {
+        color: $turquoise--20;
+      }
+      &__total {
+        color: $orange;
+      }
+      &__verdict {
+        font-weight: 500;
+        display: block;
+        margin-top: 25px;
+        .verdict {
+          &__color {
+            color: $orange;
+          }
+        }
+      }
+      &__about {
+        max-width: 440px;
+        color: $gray--00;
+        margin: 12px auto 0 auto;
+      }
+      &__button {
+        margin-top: 25px;
+      }
+    }
+  }
+  &_levels {
+    margin: 50px 0;
+    .tests {
+      &__wrap {
+        background: $white;
+        box-shadow: 0px 0px 13px rgba(54, 70, 126, 0.13);
+        border-radius: 5px;
+        padding: 25px;
+      }
+      &__heading {
+        text-align: center;
+      }
+      &__title {
+        font-size: 24px;
+        line-height: 28px;
+        color: $blue--00;
+        text-transform: uppercase;
+      }
+      &__status {
+        margin-top: 30px;
+        .status {
+          &__title {
+            color: $gray--50;
+            &_completed {
+              color: $black--00;
+              font-weight: 500;
+            }
+          }
+          &__list {
+            @include dfsb;
+            gap: 0 19px;
+          }
+          &__item {
+            text-align: center;
+            flex: 0 1 25%;
+            .bars {
+              @include dfsb;
+              gap: 0 6px;
+              margin-top: 22px;
+              .bar {
+                height: 6px;
+                border-radius: 25px;
+                background-color: $white--10;
+                flex: 0 1 33.3%;
+                &_completed {
+                  background-color: $turquoise--20;
+                }
+                &_current {
+                  background-color: $white;
+                  border: 1px solid $turquoise--20;
+                }
+              }
+            }
+          }
+        }
+      }
+      &__content {
+        margin-top: 40px;
+      }
+      &__subtitle {
+        font-size: 18px;
+        line-height: 21px;
+      }
+      &__wrapper {
+        display: grid;
+        grid-template-columns: minmax(330px, auto) minmax(245px, auto);
+        margin-top: 22px;
+        gap: 15px 35px;
+      }
+      &__left {
+        &.left-test {
+          background-color: $blue--background;
+          @include dfcenter;
+        }
+      }
+      &__right {
+        .right-test {
+          &__item {
+            padding: 15px 25px;
+            border: $line--border;
+            border-radius: 2px;
+            transition: color 0.35s, 0.35s box-shadow;
+            & + .right-test__item {
+              margin-top: 12px;
+            }
+            &:hover {
+              color: $turquoise--20;
+              box-shadow: 0px 0px 8px rgba(54, 70, 126, 0.13);
+            }
+          }
+          &__next {
+            @include dfend;
+            margin-top: 90px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 130%;
+            .next-test {
+              &__text {
+                color: $turquoise--20;
+              }
+              &__arrow {
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__content{
+    .content{
+      &__video{
+        max-width: 280px;
+        width: 100%;
+      }
+    }
+  }
+}
