@@ -91,11 +91,11 @@
         var output = []; 
         //blocks visible
         if (!result) {
-            var answers = [];
-            var question = quizTest[current];
+            var answer = [];
+            var {answers, question, content} = quizTest[current];
 
-            for (var i in question.answers) {
-                answers.push(`<li class="answers-test__item" value="${question.answers[i]}">${question.answers[i]}</li>`);
+            for (var i in answers) {
+                answer.push(`<li class="answers-test__item" value="${answers[i]}">${answers[i]}</li>`);
             }
 
             output.push(
@@ -104,9 +104,9 @@
                 <div class="tests__wrap">
                     <div class="tests__body">
                         <h2 class="tests__title">Тест на уровень английского</h2>
-                        <h3 class="tests__text">${question.question}</h3>
+                        <h3 class="tests__text">${question}</h3>
                         <div class="tests__content content">
-                            <span class="content__text">${question.content}</span>
+                            <span class="content__text">${content}</span>
                         </div>
                         <div class="tests__count count">
                             <span class="count__text">вопрос</span>
@@ -115,7 +115,7 @@
                         </div>
                         <div class="tests__answers answers-test">
                             <ul id="answers-test__list" style="user-select: none">
-                                ${answers.join('')}
+                                ${answer.join('')}
                             </ul>
                         </div>
                     </div>
@@ -124,6 +124,7 @@
         </section>`)
         }
         else {
+            var {rating, text} = result;
             output.push(`
             <section class="tests tests_results">
                 <div class="tests__inner _container">
@@ -142,9 +143,9 @@
                                 <span class="tests__results"> <b class="tests__correct">${marks}</b> вопроса из <b
                                         class="tests__total">${quizLength}</b></span>
                                 <span class="tests__verdict verdict">Ваш результат - <b
-                                        class="verdict__color">${result.rating}</b></span>
+                                        class="verdict__color">${rating}</b></span>
                                 <div class="tests__about about">
-                                    <p class="about__text">${result.text}</p>
+                                    <p class="about__text">${text}</p>
                                 </div>
                                 <button class="tests__button button">Начать обучение</button>
                             </div>
