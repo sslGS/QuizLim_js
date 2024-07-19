@@ -1,0 +1,102 @@
+[
+    {
+        "question": "Какой овощ упоминается на видео?",
+        "answers": [
+            "Tomato",
+            "Beet",
+            "Carrot",
+            "Cucumber"
+        ],
+        "content": "<video class='content__video lazy' src='./assets/videos/video34.mp4' controls></video>"
+    },
+    {
+        "question": "Вставьте пропущенное слово",
+        "answers": [
+            "Doesn't",
+            "Isn't",
+            "Don’t",
+            "Do not"
+        ],
+        "content": "Tom … at home now"
+    },
+    {
+        "question": "Вставьте пропущенное слово",
+        "answers": [
+            "Are",
+            "Do",
+            "Can",
+            "Is"
+        ],
+        "content": "These apples ... sweet"
+    },
+    {
+        "question": "Вставьте пропущенное слово",
+        "answers": [
+            "This",
+            "These",
+            "That",
+            "Those"
+        ],
+        "content": "Kerry can see … parrots"
+    },
+    {
+        "question": "Что изображено на картинке?",
+        "answers": [
+            "Apple",
+            "Pine",
+            "Pineapple",
+            "Pear"
+        ],
+        "content": "<img src='./assets/images/tests/image.png' alt='tests__image' class='tests__image'>"
+    },
+    {
+        "question": "Вставьте пропущенное слово",
+        "answers": [
+            "Is",
+            "Does",
+            "Do",
+            "Did"
+        ],
+        "content": "... Tom play soccer or tennis?"
+    },
+    {
+        "question": "Вставьте пропущенное слово",
+        "answers": [
+            "Swimming",
+            "Swim",
+            "Swims",
+            "To swim"
+        ],
+        "content": "Jerry can … well"
+    },
+    {
+        "question": "Вставьте пропущенное слово",
+        "answers": [
+            "better",
+            "Good",
+            "The best",
+            "Nice"
+        ],
+        "content": "Which is … park in London?"
+    },
+    {
+        "question": "Вставьте пропущенное слово",
+        "answers": [
+            "At",
+            "For",
+            "In",
+            "To"
+        ],
+        "content": "Good pupils are never late … school"
+    },
+    {
+        "question": "Вставьте пропущенное слово",
+        "answers": [
+            "From",
+            "Of",
+            "To",
+            "At"
+        ],
+        "content": "The cinema is not far … our house"
+    }
+]
