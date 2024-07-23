@@ -49,7 +49,7 @@ export const renderQuiz = (state) => {
                             <span class="count__total">/${quizLength}</span>
                         </div>
                         <div class="tests__answers answers-test">
-                            <ul id="answers-test__list" style="user-select: none">
+                            <ul id="answers-test__list">
                                 ${answerList}
                             </ul>
                         </div>
