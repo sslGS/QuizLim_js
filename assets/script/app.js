@@ -1,5 +1,6 @@
-import { fetchJSON } from './utils/fetchJSON.js';
+import { fetchJSON } from './src/services/fetchService.js';
 import { renderQuiz } from './src/components/quiz.js';
+import { initialState, setState } from './state/state.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -8,18 +9,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             fetchJSON('./assets/data/ratings.json')
         ]);
 
-        const state = {
-            slide: 0,
-            container: document.querySelector('.wrapper'),
-            blockContainer: [],
+        const state = setState(initialState, {
             quizTest,
             quizLength: quizTest.length,
-            correctAnswer: ["Tomato", "Isn't", "Are", "These", "Pineapple", "Does", "Swim", "The best", "For", "From"],
-            ratings,
-        };
+            ratings
+        });
 
         renderQuiz(state);
-
     } catch (error) {
         console.error('Error initializing quiz:', error);
     }

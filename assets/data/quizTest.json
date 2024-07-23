@@ -7,7 +7,7 @@
             "Carrot",
             "Cucumber"
         ],
-        "content": "<video class='content__video lazy' src='./assets/videos/video34.mp4' controls></video>"
+        "content": "<video class='content__video' src='./assets/videos/video34.mp4' controls></video>"
     },
     {
         "question": "Вставьте пропущенное слово",

@@ -1,12 +1,36 @@
 import { renderResult } from './result.js';
+import { setState } from '../../state/state.js';
+
+const generateAnswersList = (answers) => {
+    return answers.map(ans => `<li class="answers-test__item" data-value="${ans}">${ans}</li>`).join('');
+};
+
+const addEventListenerToAnswers = (state, handleAnswerSelection) => {
+    const saveAnswer = document.getElementById('answers-test__list');
+    if (!saveAnswer) return;
+
+    saveAnswer.addEventListener('click', (e) => {
+        if (e.target && e.target.classList.contains('answers-test__item')) {
+            handleAnswerSelection(e.target.dataset.value, state);
+        }
+    });
+};
+
+const handleAnswerSelection = (answer, state) => {
+    const newBlockContainer = [...state.blockContainer, answer];
+    const updatedState = setState(state, { blockContainer: newBlockContainer });
+
+    if (newBlockContainer.length === state.quizLength) {
+        renderResult(updatedState);
+    } else {
+        renderQuiz(setState(updatedState, { slide: state.slide + 1 }));
+    }
+};
 
 export const renderQuiz = (state) => {
     const { container, slide, quizTest, quizLength } = state;
     const { answers, question, content } = quizTest[slide];
-    
-    const generateAnswersList = (answers) => {
-        return answers.map(ans => `<li class="answers-test__item" data-value="${ans}">${ans}</li>`).join('');
-    };
+
     const answerList = generateAnswersList(answers);
 
     const quizHTML = `
@@ -37,33 +61,5 @@ export const renderQuiz = (state) => {
     const fragment = document.createRange().createContextualFragment(quizHTML);
     container.innerHTML = '';
     container.appendChild(fragment);
-    addEventListenerToAnswers(state);
-};
-
-const addEventListenerToAnswers = (state) => {
-    const saveAnswer = document.getElementById('answers-test__list');
-
-    saveAnswer.replaceWith(saveAnswer.cloneNode(true));
-    const newSaveAnswer = document.getElementById('answers-test__list');
-
-    // Using event delegation
-    newSaveAnswer.addEventListener('click', (e) => {
-        if (e.target && e.target.classList.contains('answers-test__item')) {
-            handleAnswerSelection(e.target.dataset.value, state);
-        }
-    });
-};
-
-const handleAnswerSelection = (answer, state) => {
-    const newBlockContainer = [...state.blockContainer, answer];
-    
-    if (newBlockContainer.length === state.quizLength) {
-        renderResult(state, newBlockContainer);
-    } else {
-        renderQuiz({
-            ...state,
-            slide: state.slide + 1,
-            blockContainer: newBlockContainer,
-        });
-    }
+    addEventListenerToAnswers(state, handleAnswerSelection);
 };

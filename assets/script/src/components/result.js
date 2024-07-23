@@ -1,8 +1,8 @@
 import { calculateMarks } from '../../utils/calculateMarks.js';
 import { getResult } from '../../utils/getResult.js';
 
-export const renderResult = (state, blockContainer) => {
-    const marks = calculateMarks(blockContainer, state.correctAnswer);
+export const renderResult = (state) => {
+    const marks = calculateMarks(state.blockContainer, state.correctAnswer);
     const result = getResult(marks, state.quizLength, state.ratings);
 
     const resultHTML = `
@@ -14,7 +14,7 @@ export const renderResult = (state, blockContainer) => {
                             <h2 class="tests__title">Тест на уровень английского</h2>
                             <div class="tests__count count">
                                 <span class="count__text">вопрос</span>
-                                <div class="count__current">${blockContainer.length}</div>
+                                <div class="count__current">${state.blockContainer.length}</div>
                                 <div class="count__total">/${state.quizLength}</div>
                             </div>
                         </div>
